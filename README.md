@@ -160,6 +160,13 @@ plover --script plover_plugins install --editable .
 > of Plover. See the [Invoke Plover from the command line][] page for details on
 > how to create that reference.
 
+When necessary, the plugin can be uninstalled via the command line with the
+following command:
+
+```console
+plover --script plover_plugins uninstall plover-platform-specific-translation
+```
+
 [Build Status image]: https://github.com/paulfioravanti/plover-platform-specific-translation/actions/workflows/ci.yml/badge.svg
 [Build Status url]: https://github.com/paulfioravanti/plover-platform-specific-translation/actions/workflows/ci.yml
 [Coverage.py]: https://github.com/nedbat/coveragepy
