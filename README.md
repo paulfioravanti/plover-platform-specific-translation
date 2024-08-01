@@ -77,6 +77,17 @@ contain any text to be output:
 "H-L": "{:PLATFORM:WINDOWS:Hello:MAC:Hi:LINUX:Good day:OTHER:Whassup}"
 ```
 
+## Configuration
+
+When a platform-specific translation is successfully determined from an outline,
+the result is stored in the [Plover configuration directory][] on your machine
+in a file called `platform_specific_translation.json`. This is done in order to
+prevent determination actions from being done multiple times for the same
+outline, and hence speed up translation lookups.
+
+You should not need to manually add any entries to the configuration, but if you
+find any obsolete entries, feel free to delete them.
+
 ## Technical Details
 
 The heart of this plugin is essentially [Python][]'s [`platform.system()`][]
@@ -181,6 +192,7 @@ plover --script plover_plugins uninstall plover-platform-specific-translation
 [Mypy]: https://github.com/python/mypy
 [`platform.system()`]: https://docs.python.org/3/library/platform.html#platform.system
 [Plover]: https://www.openstenoproject.org/
+[Plover configuration directory]: https://plover.readthedocs.io/en/latest/api/oslayer_config.html#plover.oslayer.config.CONFIG_DIR
 [plugin]: https://plover.readthedocs.io/en/latest/plugins.html#types-of-plugins
 [potentially deprecated]: https://discuss.python.org/t/lets-deprecate-platform-system-java/48026/4
 [Pylint]: https://github.com/pylint-dev/pylint
