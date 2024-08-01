@@ -46,14 +46,14 @@ create a platform-specific translation in your steno dictionaries.
 Specify a translation for all possible (and unknown) platforms:
 
 ```json
-"KP*EU": "{:PLATFORM:WINDOWS:\{#CONTROL(C)\}:MAC:\{#SUPER(C)\}:LINUX:\{#CONTROL(C)\}:OTHER:\{#CONTROL(C)\}}"
+"KP*EU": "{:PLATFORM:WINDOWS:#CONTROL(C):MAC:#SUPER(C):LINUX:#CONTROL(C):OTHER:#CONTROL(C)}"
 ```
 
 Specify a translation for only some platforms, and provide a default fallback
 translation for any other platform:
 
 ```json
-"KP*EU": "{:PLATFORM:MAC:\{#SUPER(C)\}:OTHER:\{#CONTROL(C)\}}"
+"KP*EU": "{:PLATFORM:MAC:#SUPER(C):OTHER:#CONTROL(C)}"
 ```
 
 Specify a translation for only some platforms, but without a fallback for other
@@ -61,13 +61,13 @@ platforms (will show an error if current platform is not found, but if you are
 confident you know what platforms you work with, this should be fine):
 
 ```json
-"KP*EU": "{:PLATFORM:WINDOWS:\{#CONTROL(C)\}:MAC:\{#SUPER(C)\}}"
+"KP*EU": "{:PLATFORM:WINDOWS:#CONTROL(C):MAC:#SUPER(C)}"
 ```
 
 Specify only a default fallback for other platforms (pointless, but supported):
 
 ```json
-"KP*EU": "{:PLATFORM:OTHER:\{#CONTROL(C)\}}"
+"KP*EU": "{:PLATFORM:OTHER:#CONTROL(C)}"
 ```
 
 Note that the translation values are not limited to keyboard shortcuts, but can
@@ -80,10 +80,10 @@ contain any text to be output:
 ## Configuration
 
 When a platform-specific translation is successfully determined from an outline,
-the result is stored in the [Plover configuration directory][] on your machine
-in a file called `platform_specific_translation.json`. This is done in order to
-prevent determination actions from being done multiple times for the same
-outline, and hence speed up translation lookups.
+the result is stored in the local [Plover configuration directory][] on your
+machine in a file called `platform_specific_translation.json`. This is done in
+order to prevent determination actions from being done multiple times for the
+same outline, and hence speed up lookups for already known translations.
 
 You should not need to manually add any entries to the configuration, but if you
 find any obsolete entries, feel free to delete them.

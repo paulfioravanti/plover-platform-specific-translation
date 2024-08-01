@@ -1,10 +1,10 @@
 {
   "platform_specific_translations": {
-    "{WINDOWS:{#CONTROL(C)}:MAC:{#SUPER(C)}:LINUX:{#CONTROL(C)}:OTHER:{#CONTROL(C)}}": "{#SUPER(C)}",
-    "{MAC:{#SUPER(C)}:OTHER:{#CONTROL(C)}}": "{#SUPER(C)}",
-    "{WINDOWS:{#CONTROL(C)}:MAC:{#SUPER(C)}}": "{#SUPER(C)}",
-    "{OTHER:{#CONTROL(C)}}": "{#CONTROL(C)",
-    "{WINDOWS:Hello:MAC:Hi:LINUX:Good day:OTHER:Whassup}": "Hi",
-    "{Windows:Goodbye:Mac:Bye:Linux:See you:Other:Sayonara}": "Bye"
+    "WINDOWS:#CONTROL(C):MAC:#SUPER(C):LINUX:#CONTROL(C):OTHER:#CONTROL(C)": "#SUPER(C)",
+    "MAC:#SUPER(C):OTHER:#CONTROL(C)": "#SUPER(C)",
+    "WINDOWS:#CONTROL(C):MAC:#SUPER(C)": "#SUPER(C)",
+    "OTHER:#CONTROL(C)": "#CONTROL(C)",
+    "WINDOWS:Hello:MAC:Hi:LINUX:Good day:OTHER:Whassup": "Hi",
+    "Windows:Goodbye:Mac:Bye:Linux:See you:Other:Sayonara": "Bye"
   }
 }

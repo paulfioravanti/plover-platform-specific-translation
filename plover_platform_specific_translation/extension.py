@@ -4,7 +4,9 @@ Plover entry point extension module for Plover Platform Specific Translation
     - https://plover.readthedocs.io/en/latest/plugin-dev/extensions.html
     - https://plover.readthedocs.io/en/latest/plugin-dev/meta.html
 """
+import re
 from pathlib import Path
+from typing import Pattern
 
 from plover.engine import StenoEngine
 from plover.formatting import _Action, _Context
@@ -17,7 +19,8 @@ from . import platform
 from . import translation
 
 
-_CONFIG_FILEPATH = Path(CONFIG_DIR) / "platform_specific_translation.json"
+_COMBO_TYPE: Pattern[str] = re.compile(r"#.*")
+_CONFIG_FILEPATH: Path = Path(CONFIG_DIR) / "platform_specific_translation.json"
 
 class PlatformSpecificTranslation:
     """
@@ -78,7 +81,12 @@ class PlatformSpecificTranslation:
             config.save(_CONFIG_FILEPATH, self._platform_translations)
 
         action = ctx.new_action()
-        action.text = platform_translation
+
+        if _COMBO_TYPE.match(platform_translation):
+            action.combo = platform_translation.replace("#", "")
+        else:
+            action.text = platform_translation
+
         return action
 
     def _machine_state_changed(
