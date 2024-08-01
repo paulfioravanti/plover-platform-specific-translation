@@ -1,0 +1,16 @@
+# just --working-directory . --justfile test/justfile
+
+default: test lint typecheck
+
+test:
+  pytest --cov --cov-report=term-missing
+
+coverage:
+  pytest --cov --cov-report=html
+  open htmlcov/index.html
+
+lint:
+  pylint plover_platform_specific_translation
+
+typecheck:
+  mypy plover_platform_specific_translation

@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Distribution / packaging
+*.egg-info/
+build/
+dist/
+
+# macOS-specific
+.DS_Store
+
+# Language versioning
+.tool-versions
+
+# Test coverage
+htmlcov/
+.coverage

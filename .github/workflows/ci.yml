@@ -1,0 +1,40 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+concurrency:
+  group: ci-tests-${{ github.ref }}-1
+  cancel-in-progress: true
+jobs:
+  ci:
+    name: Build, Lint, Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install Test, Coverage, Lint, Type Checking Dependencies
+        run: pip install pytest pylint mypy coverage
+
+      - name: Run Linter
+        run: pylint plover_platform_specific_translation
+
+      - name: Run Type Checker
+        run: mypy plover_platform_specific_translation
+
+      - name: Run Tests
+        run: pytest
+
+      - name: Run Coverage
+        run: |
+          coverage run --module pytest
+          coverage report --show-missing

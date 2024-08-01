@@ -1,0 +1,2 @@
+[MAIN]
+ignored-modules=plover.machine.base,plover.registry,plover.engine,plover.formatting,plover.oslayer.config
