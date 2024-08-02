@@ -24,6 +24,16 @@ plover --script plover_plugins install --editable .
 > of Plover. See the [Invoke Plover from the command line][] page for details on
 > how to create that reference.
 
+Then:
+
+1. When it finishes installing, restart Plover
+2. After re-opening Plover, open the Configuration screen (either click the
+   Configuration icon, or from the main Plover application menu, select
+   `Preferences...`)
+3. Open the Plugins tab
+4. Check the box next to `plover_platform_specific_translation` to activate the
+   plugin
+
 ### Post-Plover Plugin Registry inclusion (Future)
 
 1. In the Plover application, open the Plugins Manager (either click the Plugins
