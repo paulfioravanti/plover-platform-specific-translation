@@ -4,9 +4,8 @@ Plover entry point extension module for Plover Platform Specific Translation
     - https://plover.readthedocs.io/en/latest/plugin-dev/extensions.html
     - https://plover.readthedocs.io/en/latest/plugin-dev/meta.html
 """
-import re
 from pathlib import Path
-from typing import Pattern
+from typing import Tuple
 
 from plover.engine import StenoEngine
 from plover.formatting import _Action, _Context
@@ -19,7 +18,6 @@ from . import platform
 from . import translation
 
 
-_COMBO_TYPE: Pattern[str] = re.compile(r"#(.*)")
 _CONFIG_FILEPATH: Path = Path(CONFIG_DIR) / "platform_specific_translation.json"
 
 class PlatformSpecificTranslation:
@@ -30,7 +28,7 @@ class PlatformSpecificTranslation:
     """
     _engine: StenoEngine
     _platform: str
-    _platform_translations: dict[str, str]
+    _platform_translations: dict[str, Tuple[str, str]]
 
     def __init__(self, engine: StenoEngine) -> None:
         self._engine = engine
@@ -73,17 +71,24 @@ class PlatformSpecificTranslation:
             raise ValueError("No platform-specific translations provided")
 
         platform_translation: str
+        platform_translation_type: str
         try:
-            platform_translation = self._platform_translations[argument]
+            (platform_translation_type, platform_translation) = (
+                self._platform_translations[argument]
+            )
         except KeyError:
-            platform_translation = translation.resolve(self._platform, argument)
-            self._platform_translations[argument] = platform_translation
+            (platform_translation_type, platform_translation) = (
+                translation.resolve(self._platform, argument)
+            )
+            self._platform_translations[argument] = (
+                (platform_translation_type, platform_translation)
+            )
             config.save(_CONFIG_FILEPATH, self._platform_translations)
 
         action = ctx.new_action()
 
-        if combo_translation := _COMBO_TYPE.match(platform_translation):
-            action.combo = combo_translation.group(1)
+        if platform_translation_type == "combo":
+            action.combo = platform_translation
         else:
             action.text = platform_translation
 

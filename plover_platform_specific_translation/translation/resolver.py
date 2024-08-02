@@ -2,9 +2,14 @@
 Module to resolve the appropriate translation given a set of platform-specific
 translations.
 """
-_ARGUMENT_DIVIDER = ":"
+import re
+from typing import Pattern, Tuple
 
-def resolve(platform: str, outline_translation: str) -> str:
+
+_ARGUMENT_DIVIDER = ":"
+_COMBO_TYPE: Pattern[str] = re.compile(r"#(.*)")
+
+def resolve(platform: str, outline_translation: str) -> Tuple[str, str]:
     """
     Resolves a single translation from a set of platform-specific translations.
     """
@@ -20,7 +25,10 @@ def resolve(platform: str, outline_translation: str) -> str:
                 f"No translation provided for platform: {platform}"
             ) from exc
 
-    return translation
+    if combo_translation := _COMBO_TYPE.match(translation):
+        return ("combo", combo_translation.group(1))
+
+    return ("text", translation)
 
 def _parse_outline_translation(outline_translation: str) -> dict[str, str]:
     it = iter(outline_translation.split(_ARGUMENT_DIVIDER))
