@@ -19,7 +19,7 @@ from . import platform
 from . import translation
 
 
-_COMBO_TYPE: Pattern[str] = re.compile(r"#.*")
+_COMBO_TYPE: Pattern[str] = re.compile(r"#(.*)")
 _CONFIG_FILEPATH: Path = Path(CONFIG_DIR) / "platform_specific_translation.json"
 
 class PlatformSpecificTranslation:
@@ -82,8 +82,8 @@ class PlatformSpecificTranslation:
 
         action = ctx.new_action()
 
-        if _COMBO_TYPE.match(platform_translation):
-            action.combo = platform_translation.replace("#", "")
+        if combo_translation := _COMBO_TYPE.match(platform_translation):
+            action.combo = combo_translation.group(1)
         else:
             action.text = platform_translation
 
