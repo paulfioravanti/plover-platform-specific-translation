@@ -1,5 +1,9 @@
 {
   "platform_specific_translations": {
+    "WINDOWS::COMMAND:TOGGLE_DICT:-some_dict.py:MAC::COMMAND:APPLESCRIPT:/path/to/script.scpt:LINUX:PLOVER:TOGGLE_DICT:+some_dict.py:OTHER::COMMAND:TOGGLE_DICT:~some_dict.py": [
+      "command",
+      "APPLESCRIPT:/path/to/script.scpt"
+    ],
     "WINDOWS:#CONTROL(C):MAC:#SUPER(C):LINUX:#CONTROL(C):OTHER:#CONTROL(C)": [
       "combo",
       "SUPER(C)"

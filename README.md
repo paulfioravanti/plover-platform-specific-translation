@@ -80,8 +80,17 @@ Specify only a default fallback for other platforms (pointless, but supported):
 "KP*EU": "{:PLATFORM:OTHER:#CONTROL(C)}"
 ```
 
-Note that the translation values are not limited to keyboard shortcuts, but can
-contain any text to be output:
+Note that the translation values are not limited to keyboard shortcuts, and can
+contain [commands][] to run:
+
+```json
+"TO*LG": "{:PLATFORM:WINDOWS:PLOVER:TOGGLE_DICT:+win_dict.py:MAC::COMMAND:TOGGLE_DICT:+mac_dict.py}"
+```
+
+> Both command prefixes of `{PLOVER:<command>}` and `{:COMMAND:<command>}` are
+> supported.
+
+Naturally, plain text output is also supported:
 
 ```json
 "H-L": "{:PLATFORM:WINDOWS:Hello:MAC:Hi:LINUX:Good day:OTHER:Whassup}"
@@ -190,6 +199,7 @@ plover --script plover_plugins uninstall plover-platform-specific-translation
 
 [Build Status image]: https://github.com/paulfioravanti/plover-platform-specific-translation/actions/workflows/ci.yml/badge.svg
 [Build Status url]: https://github.com/paulfioravanti/plover-platform-specific-translation/actions/workflows/ci.yml
+[commands]: https://plover.readthedocs.io/en/latest/plugin-dev/commands.html
 [Coverage.py]: https://github.com/nedbat/coveragepy
 [extension]: https://plover.readthedocs.io/en/latest/plugin-dev/extensions.html
 [git]: https://git-scm.com/

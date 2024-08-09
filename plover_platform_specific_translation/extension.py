@@ -87,8 +87,10 @@ class PlatformSpecificTranslation:
 
         action = ctx.new_action()
 
-        if platform_translation_type == "combo":
+        if platform_translation_type == translation.COMBO:
             action.combo = platform_translation
+        elif platform_translation_type == translation.COMMAND:
+            action.command = platform_translation
         else:
             action.text = platform_translation
 
