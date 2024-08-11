@@ -8,14 +8,19 @@ from pathlib import Path
 from typing import Tuple
 
 from plover.engine import StenoEngine
-from plover.formatting import _Action, _Context
+from plover.formatting import (
+    _Action,
+    _Context
+)
 from plover.machine.base import STATE_RUNNING
 from plover.oslayer.config import CONFIG_DIR
 from plover.registry import registry
 
-from . import config
-from . import platform
-from . import translation
+from . import (
+    config,
+    platform,
+    translation
+)
 
 
 _CONFIG_FILEPATH: Path = Path(CONFIG_DIR) / "platform_specific_translation.json"

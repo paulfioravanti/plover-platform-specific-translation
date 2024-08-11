@@ -3,7 +3,10 @@ Module to resolve the appropriate translation given a set of platform-specific
 translations.
 """
 import re
-from typing import Pattern, Tuple
+from typing import (
+    Pattern,
+    Tuple
+)
 
 
 COMBO = "combo"
