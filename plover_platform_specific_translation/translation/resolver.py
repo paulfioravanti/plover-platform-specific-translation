@@ -13,10 +13,13 @@ COMBO = "combo"
 COMMAND = "command"
 _TEXT = "text"
 
+# Ignore any colons in commands contained in outline translations.
 _ARGUMENT_DIVIDER: Pattern[str] = re.compile(
-    "(?:(?<=MAC)|(?<=WINDOWS)|(?<=LINUX|OTHER)):"
-    "|:(?:(?=MAC)|(?=WINDOWS)|(?=LINUX|OTHER))",
-    re.IGNORECASE
+    """
+    (?:(?<=MAC)|(?<=WINDOWS)|(?<=LINUX|OTHER)): # Colon after platform name
+    |:(?:(?=MAC)|(?=WINDOWS)|(?=LINUX|OTHER))   # OR colon before platform name
+    """,
+    re.IGNORECASE | re.VERBOSE
 )
 _COMBO_TYPE: Pattern[str] = re.compile(r"#(.*)")
 _COMMAND_TYPE: Pattern[str] = re.compile(
