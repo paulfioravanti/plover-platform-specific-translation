@@ -23,7 +23,7 @@ jobs:
           python-version: 3.9
 
       - name: Install Test, Coverage, Lint, Type Checking Dependencies
-        run: pip install pytest pylint mypy coverage
+        run: python -m pip install --editable ".[test]"
 
       - name: Run Linter
         run: pylint plover_platform_specific_translation

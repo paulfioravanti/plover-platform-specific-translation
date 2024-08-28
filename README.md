@@ -140,7 +140,11 @@ Clone from GitHub with [git][]:
 ```console
 git clone git@github.com:paulfioravanti/plover-platform-specific-translation.git
 cd plover-platform-specific-translation
+python -m pip install --editable ".[test]"
 ```
+
+If you are a [Tmuxinator][] user, you may find my
+[plover_platform_specific_translation project file][] of reference.
 
 ### Python Version
 
