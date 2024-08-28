@@ -90,7 +90,7 @@ class PlatformSpecificTranslation:
             )
             config.save(_CONFIG_FILEPATH, self._platform_translations)
 
-        action = ctx.new_action()
+        action: _Action = ctx.new_action()
 
         if platform_translation_type == translation.COMBO:
             action.combo = platform_translation
