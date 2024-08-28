@@ -4,14 +4,19 @@ translations.
 """
 import re
 from typing import (
+    Any,
+    Iterator,
+    Optional,
+    Match,
     Pattern,
-    Tuple
+    Tuple,
+    Union
 )
 
 
-COMBO = "combo"
-COMMAND = "command"
-_TEXT = "text"
+COMBO: str = "combo"
+COMMAND: str = "command"
+_TEXT: str = "text"
 
 # Ignore any colons in commands contained in outline translations.
 _ARGUMENT_DIVIDER: Pattern[str] = re.compile(
@@ -31,8 +36,11 @@ def resolve(platform: str, outline_translation: str) -> Tuple[str, str]:
     """
     Resolves a single translation from a set of platform-specific translations.
     """
-    platform_translations = _parse_outline_translation(outline_translation)
+    platform_translations: dict[str, str] = (
+        _parse_outline_translation(outline_translation)
+    )
 
+    translation: str
     try:
         translation = platform_translations[platform]
     except KeyError:
@@ -43,16 +51,21 @@ def resolve(platform: str, outline_translation: str) -> Tuple[str, str]:
                 f"No translation provided for platform: {platform}"
             ) from exc
 
+    combo_translation: Optional[Match[str]]
     if combo_translation := re.match(_COMBO_TYPE, translation):
         return (COMBO, combo_translation.group(1))
 
+    command_translation: Optional[Match[str]]
     if command_translation := re.match(_COMMAND_TYPE, translation):
         return (COMMAND, command_translation.group(1))
 
     return (_TEXT, translation)
 
 def _parse_outline_translation(outline_translation: str) -> dict[str, str]:
-    it = iter(re.split(_ARGUMENT_DIVIDER, outline_translation))
+    it: Iterator[Union[str, Any]] = iter(
+        re.split(_ARGUMENT_DIVIDER, outline_translation)
+    )
+
     return {
         platform.upper(): translation
         for platform, translation

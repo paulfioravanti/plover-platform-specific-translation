@@ -15,6 +15,7 @@ def load(filepath: Path) -> dict[str, Any]:
 
     Raises an error if the specified config file is not JSON format.
     """
+    data: dict[str, Any]
     try:
         with filepath.open(encoding="utf-8") as file:
             data = json.load(file)
@@ -24,7 +25,7 @@ def load(filepath: Path) -> dict[str, Any]:
     except json.JSONDecodeError as exc:
         raise ValueError("Unable to decode file contents as JSON") from exc
 
-    return data # type: ignore[no-any-return]
+    return data
 
 def save(filepath: Path, data: dict[str, dict[str, Tuple[str, str]]]) -> None:
     """

@@ -61,6 +61,7 @@ def test_loading_valid_config(valid_platform_translations_config_path):
     config_platform_translations = (
         config.load(valid_platform_translations_config_path)
     )
+
     assert (
         config_platform_translations[
             "WINDOWS:Hello:MAC:Hi:LINUX:Good day:OTHER:Whassup"
@@ -74,8 +75,8 @@ def test_saving_config(valid_platform_translations_config_path):
         valid_platform_translations_config_path,
         platform_translations
     )
-
     config_platform_translations = (
         config.load(valid_platform_translations_config_path)
     )
+
     assert config_platform_translations == platform_translations

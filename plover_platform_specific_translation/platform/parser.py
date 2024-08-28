@@ -6,7 +6,7 @@ an outline.
 import platform
 
 
-_PLATFORM_MAPPINGS = {
+_PLATFORM_MAPPINGS: dict[str, str] = {
     "Windows": "WINDOWS",
     "Darwin": "MAC",
     "Linux": "LINUX"
