@@ -17,12 +17,14 @@ def non_existent_config_path():
 @pytest.fixture
 def non_dict_platform_translations_config_path():
     return (
-        (Path(__file__).parent / "files/non_dict_platform_translations.json").resolve()
-    )
+        Path(__file__).parent / "files/non_dict_platform_translations.json"
+    ).resolve()
 
 @pytest.fixture
 def valid_platform_translations_config_path():
-    path = (Path(__file__).parent / "files/valid_platform_translations.json").resolve()
+    path = (
+        Path(__file__).parent / "files/valid_platform_translations.json"
+    ).resolve()
     with path.open(encoding="utf-8") as file:
         config_data = json.load(file)
         file.close()
@@ -59,7 +61,12 @@ def test_loading_valid_config(valid_platform_translations_config_path):
     config_platform_translations = (
         config.load(valid_platform_translations_config_path)
     )
-    assert config_platform_translations["WINDOWS:Hello:MAC:Hi:LINUX:Good day:OTHER:Whassup"] == ("text", "Hi")
+    assert (
+        config_platform_translations[
+            "WINDOWS:Hello:MAC:Hi:LINUX:Good day:OTHER:Whassup"
+        ]
+        == ("text", "Hi")
+    )
 
 def test_saving_config(valid_platform_translations_config_path):
     platform_translations = {"foo": ("text", "bar")}
