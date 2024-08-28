@@ -181,6 +181,10 @@ coverage html
 open htmlcov/index.html
 ```
 
+If you are a [`just`][] user, you may find the [`justfile`][] useful during
+development in running multiple test commands. You can run the following command
+from the project root directory:
+
 ### Deploying Changes
 
 After making any code changes, deploy the plugin into Plover with the following
@@ -208,6 +212,8 @@ plover --script plover_plugins uninstall plover-platform-specific-translation
 [extension]: https://plover.readthedocs.io/en/latest/plugin-dev/extensions.html
 [git]: https://git-scm.com/
 [Invoke Plover from the command line]: https://github.com/openstenoproject/plover/wiki/Invoke-Plover-from-the-command-line
+[`just`]: https://github.com/casey/just
+[`justfile`]: ./test/justfile
 [Jython]: https://www.jython.org/
 [linting image]: https://img.shields.io/badge/linting-pylint-yellowgreen
 [linting url]: https://github.com/pylint-dev/pylint
@@ -217,6 +223,7 @@ plover --script plover_plugins uninstall plover-platform-specific-translation
 [`platform.system()`]: https://docs.python.org/3/library/platform.html#platform.system
 [Plover]: https://www.openstenoproject.org/
 [Plover configuration directory]: https://plover.readthedocs.io/en/latest/api/oslayer_config.html#plover.oslayer.config.CONFIG_DIR
+[plover_platform_specific_translation project file]: https://github.com/paulfioravanti/dotfiles/blob/master/tmuxinator/plover_platform_specific_translation.yml
 [plugin]: https://plover.readthedocs.io/en/latest/plugins.html#types-of-plugins
 [potentially deprecated]: https://discuss.python.org/t/lets-deprecate-platform-system-java/48026/4
 [Pylint]: https://github.com/pylint-dev/pylint
@@ -226,4 +233,5 @@ plover --script plover_plugins uninstall plover-platform-specific-translation
 [Pytest]: https://pytest.org/
 [pytest-cov]: https://github.com/pytest-dev/pytest-cov/
 [Python]: https://www.python.org/
+[Tmuxinator]: https://github.com/tmuxinator/tmuxinator
 [`workflow_context.yml`]: https://github.com/openstenoproject/plover/blob/master/.github/workflows/ci/workflow_context.yml
