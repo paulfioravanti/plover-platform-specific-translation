@@ -51,6 +51,9 @@ jobs:
   github-release:
     name: GitHub Release
     runs-on: ubuntu-latest
+    needs:
+      - pypi-publish
+    if: always() && needs.pypi-publish.result == 'success'
     permissions:
       contents: write
     steps:
