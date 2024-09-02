@@ -9,6 +9,8 @@ from typing import (
 )
 
 
+CONFIG_BASENAME: str = "platform_specific_translation.json"
+
 def load(filepath: Path) -> dict[str, Any]:
     """
     Reads in data from a JSON file

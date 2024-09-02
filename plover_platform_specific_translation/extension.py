@@ -23,7 +23,7 @@ from . import (
 )
 
 
-_CONFIG_FILEPATH: Path = Path(CONFIG_DIR) / "platform_specific_translation.json"
+_CONFIG_FILE: Path = Path(CONFIG_DIR) / config.CONFIG_BASENAME
 
 class PlatformSpecificTranslation:
     """
@@ -43,7 +43,7 @@ class PlatformSpecificTranslation:
         Sets up the meta plugin, steno engine hooks, and information to cache
         """
         self._platform = platform.parse()
-        self._platform_translations = config.load(_CONFIG_FILEPATH)
+        self._platform_translations = config.load(_CONFIG_FILE)
         registry.register_plugin(
             "meta",
             "PLATFORM",
@@ -88,7 +88,7 @@ class PlatformSpecificTranslation:
             self._platform_translations[argument] = (
                 (platform_translation_type, platform_translation)
             )
-            config.save(_CONFIG_FILEPATH, self._platform_translations)
+            config.save(_CONFIG_FILE, self._platform_translations)
 
         action: _Action = ctx.new_action()
 
@@ -112,4 +112,4 @@ class PlatformSpecificTranslation:
         allows for changes made to translations to be re-read in.
         """
         if machine_state == STATE_RUNNING:
-            self._platform_translations = config.load(_CONFIG_FILEPATH)
+            self._platform_translations = config.load(_CONFIG_FILE)

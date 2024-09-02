@@ -185,6 +185,10 @@ If you are a [`just`][] user, you may find the [`justfile`][] useful during
 development in running multiple test commands. You can run the following command
 from the project root directory:
 
+```console
+just --working-directory . --justfile test/justfile
+```
+
 ### Deploying Changes
 
 After making any code changes, deploy the plugin into Plover with the following
