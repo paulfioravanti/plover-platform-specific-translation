@@ -78,11 +78,11 @@ class PlatformSpecificTranslation:
         platform_translation: str
         platform_translation_type: str
         try:
-            (platform_translation_type, platform_translation) = (
+            platform_translation_type, platform_translation = (
                 self._platform_translations[argument]
             )
         except KeyError:
-            (platform_translation_type, platform_translation) = (
+            platform_translation_type, platform_translation = (
                 translation.resolve(self._platform, argument)
             )
             self._platform_translations[argument] = (

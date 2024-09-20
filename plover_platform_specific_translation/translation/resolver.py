@@ -51,6 +51,21 @@ def resolve(platform: str, outline_translation: str) -> Tuple[str, str]:
                 f"No translation provided for platform: {platform}"
             ) from exc
 
+    return _resolve_type_for_translation(translation)
+
+def _parse_outline_translation(outline_translation: str) -> dict[str, str]:
+    it: Iterator[Union[str, Any]] = iter(
+        re.split(_ARGUMENT_DIVIDER, outline_translation)
+    )
+
+    # REF: https://stackoverflow.com/a/5389547/567863
+    return {
+        platform.upper(): translation
+        for platform, translation
+        in zip(it, it)
+    }
+
+def _resolve_type_for_translation(translation: str) -> Tuple[str, str]:
     combo_translation: Optional[Match[str]]
     if combo_translation := re.match(_COMBO_TYPE, translation):
         return (COMBO, combo_translation.group(1))
@@ -60,14 +75,3 @@ def resolve(platform: str, outline_translation: str) -> Tuple[str, str]:
         return (COMMAND, command_translation.group(1))
 
     return (_TEXT, translation)
-
-def _parse_outline_translation(outline_translation: str) -> dict[str, str]:
-    it: Iterator[Union[str, Any]] = iter(
-        re.split(_ARGUMENT_DIVIDER, outline_translation)
-    )
-
-    return {
-        platform.upper(): translation
-        for platform, translation
-        in zip(it, it)
-    }

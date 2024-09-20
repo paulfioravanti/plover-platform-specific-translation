@@ -3,13 +3,8 @@ Module to handle reading and writing to JSON
 """
 import json
 from pathlib import Path
-from typing import (
-    Any,
-    Tuple
-)
+from typing import Any
 
-
-CONFIG_BASENAME: str = "platform_specific_translation.json"
 
 def load(filepath: Path) -> dict[str, Any]:
     """
@@ -29,7 +24,7 @@ def load(filepath: Path) -> dict[str, Any]:
 
     return data
 
-def save(filepath: Path, data: dict[str, dict[str, Tuple[str, str]]]) -> None:
+def save(filepath: Path, data: dict[str, Any]) -> None:
     """
     Saves a dictionary to a JSON file.
     """

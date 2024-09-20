@@ -21,6 +21,19 @@ def non_dict_platform_translations_config_path():
     ).resolve()
 
 @pytest.fixture
+def dict_non_list_platform_translations_config_path():
+    return (
+        Path(__file__).parent / "files/dict_non_list_platform_translations.json"
+    ).resolve()
+
+@pytest.fixture
+def dict_list_non_string_platform_translations_config_path():
+    return (
+        Path(__file__).parent
+        / "files/dict_list_non_string_platform_translations.json"
+    ).resolve()
+
+@pytest.fixture
 def valid_platform_translations_config_path():
     path = (
         Path(__file__).parent / "files/valid_platform_translations.json"
@@ -53,9 +66,36 @@ def test_loading_config_with_non_dict_platform_translations(
 ):
     with pytest.raises(
         ValueError,
-        match="'platform_specific_translations' must be a dict"
+        match=(
+            "'platform_specific_translations' must be a dict containing "
+            "lists of strings."
+        )
     ):
         config.load(non_dict_platform_translations_config_path)
+
+def test_loading_config_with_dict_non_list_platform_translations(
+    dict_non_list_platform_translations_config_path
+):
+    with pytest.raises(
+        ValueError,
+        match=(
+            "'platform_specific_translations' must be a dict containing "
+            "lists of strings."
+        )
+    ):
+        config.load(dict_non_list_platform_translations_config_path)
+
+def test_loading_config_with_dict_list_non_string_platform_translations(
+    dict_list_non_string_platform_translations_config_path
+):
+    with pytest.raises(
+        ValueError,
+        match=(
+            "'platform_specific_translations' must be a dict containing "
+            "lists of strings."
+        )
+    ):
+        config.load(dict_list_non_string_platform_translations_config_path)
 
 def test_loading_valid_config(valid_platform_translations_config_path):
     config_platform_translations = (
