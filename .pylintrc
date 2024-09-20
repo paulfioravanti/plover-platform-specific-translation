@@ -1,4 +1,4 @@
-[MAIN]
+[TYPECHECK]
 ignored-modules =
     plover.engine,
     plover.formatting,
