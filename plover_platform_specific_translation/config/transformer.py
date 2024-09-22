@@ -4,6 +4,7 @@ Transformer
 Module to handle transforming information from the application JSON config file
 into a form the application can work with.
 """
+
 from typing import (
     Any,
     Tuple
@@ -46,6 +47,4 @@ def transform_outbound(
     """
     Transform platform translations into outbound config data.
     """
-    return {
-        "platform_specific_translations": platform_translations
-    }
+    return {"platform_specific_translations": platform_translations}

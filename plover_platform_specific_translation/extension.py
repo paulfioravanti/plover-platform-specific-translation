@@ -4,6 +4,7 @@ Plover entry point extension module for Plover Platform Specific Translation
     - https://plover.readthedocs.io/en/latest/plugin-dev/extensions.html
     - https://plover.readthedocs.io/en/latest/plugin-dev/meta.html
 """
+
 from pathlib import Path
 from typing import Tuple
 
@@ -31,6 +32,7 @@ class PlatformSpecificTranslation:
     The meta deals with determining the appropriate outline translation
     based on the current platform.
     """
+
     _engine: StenoEngine
     _platform: str
     _platform_translations: dict[str, Tuple[str, str]]

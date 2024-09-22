@@ -2,6 +2,7 @@ import pytest
 
 from plover_platform_specific_translation import platform
 
+
 def test_windows_mapping(monkeypatch):
     monkeypatch.setattr("platform.system", lambda: "Windows")
     assert platform.parse() == "WINDOWS"

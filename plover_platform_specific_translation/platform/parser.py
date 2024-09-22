@@ -3,6 +3,7 @@ Module to handle parsing a platform.system() value into an operating system
 value compatible with a platform-specific translation that can be contained in
 an outline.
 """
+
 import platform
 
 

@@ -1,6 +1,7 @@
 """
 Module to handle reading and writing to JSON
 """
+
 import json
 from pathlib import Path
 from typing import Any

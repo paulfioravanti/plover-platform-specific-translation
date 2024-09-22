@@ -1,6 +1,7 @@
 """
 Module to handle reading in the application JSON config file.
 """
+
 from pathlib import Path
 from typing import (
     Any,
