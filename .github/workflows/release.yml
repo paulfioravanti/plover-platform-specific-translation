@@ -26,10 +26,10 @@ jobs:
         run: python -m pip install --editable ".[test]"
 
       - name: Run Linter
-        run: pylint plover_platform_specific_translation
+        run: pylint src
 
       - name: Run Type Checker
-        run: mypy plover_platform_specific_translation
+        run: mypy src
 
       - name: Run Tests
         run: pytest
