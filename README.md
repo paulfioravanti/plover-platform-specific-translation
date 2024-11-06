@@ -32,14 +32,14 @@ create a platform-specific translation in your steno dictionaries.
 Specify a translation for all possible (and unknown) platforms:
 
 ```json
-"KP*EU": "{:PLATFORM:WINDOWS:#CONTROL(C):MAC:#SUPER(C):LINUX:#CONTROL(C):OTHER:#CONTROL(C)}"
+"KP*EU": "{:PLATFORM:WINDOWS:#CONTROL(C),MAC:#SUPER(C),LINUX:#CONTROL(C),OTHER:#CONTROL(C)}"
 ```
 
 Specify a translation for only some platforms, and provide a default fallback
 translation for any other platform:
 
 ```json
-"KP*EU": "{:PLATFORM:MAC:#SUPER(C):OTHER:#CONTROL(C)}"
+"KP*EU": "{:PLATFORM:MAC:#SUPER(C),OTHER:#CONTROL(C)}"
 ```
 
 Specify a translation for only some platforms, but without a fallback for other
@@ -47,7 +47,7 @@ platforms (will show an error if current platform is not found, but if you are
 confident you know what platforms you work with, this should be fine):
 
 ```json
-"KP*EU": "{:PLATFORM:WINDOWS:#CONTROL(C):MAC:#SUPER(C)}"
+"KP*EU": "{:PLATFORM:WINDOWS:#CONTROL(C),MAC:#SUPER(C)}"
 ```
 
 Specify only a default fallback for other platforms (pointless, but supported):
@@ -60,7 +60,7 @@ Note that the translation values are not limited to keyboard shortcuts, and can
 contain [commands][] to run:
 
 ```json
-"TO*LG": "{:PLATFORM:WINDOWS:PLOVER:TOGGLE_DICT:+win_dict.py:MAC::COMMAND:TOGGLE_DICT:+mac_dict.py}"
+"TO*LG": "{:PLATFORM:WINDOWS:PLOVER:TOGGLE_DICT:+win_dict.py,MAC::COMMAND:TOGGLE_DICT:+mac_dict.py}"
 ```
 
 > Both command prefixes of `{PLOVER:<command>}` and `{:COMMAND:<command>}` are
@@ -69,7 +69,7 @@ contain [commands][] to run:
 Naturally, plain text output is also supported:
 
 ```json
-"H-L": "{:PLATFORM:WINDOWS:Hello:MAC:Hi:LINUX:Good day:OTHER:Whassup}"
+"H-L": "{:PLATFORM:WINDOWS:Hello,MAC:Hi,LINUX:Good day,OTHER:Whassup}"
 ```
 
 ## Configuration

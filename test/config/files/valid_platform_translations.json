@@ -1,18 +1,18 @@
 {
   "platform_specific_translations": {
-    "WINDOWS::COMMAND:TOGGLE_DICT:-some_dict.py:MAC::COMMAND:APPLESCRIPT:/path/to/script.scpt:LINUX:PLOVER:TOGGLE_DICT:+some_dict.py:OTHER::COMMAND:TOGGLE_DICT:~some_dict.py": [
+    "WINDOWS::COMMAND:TOGGLE_DICT:-some_dict.py,MAC::COMMAND:APPLESCRIPT:/path/to/script.scpt,LINUX:PLOVER:TOGGLE_DICT:+some_dict.py,OTHER::COMMAND:TOGGLE_DICT:~some_dict.py": [
       "command",
       "APPLESCRIPT:/path/to/script.scpt"
     ],
-    "WINDOWS:#CONTROL(C):MAC:#SUPER(C):LINUX:#CONTROL(C):OTHER:#CONTROL(C)": [
+    "WINDOWS:#CONTROL(C),MAC:#SUPER(C),LINUX:#CONTROL(C),OTHER:#CONTROL(C)": [
       "combo",
       "SUPER(C)"
     ],
-    "MAC:#SUPER(C):OTHER:#CONTROL(C)": [
+    "MAC:#SUPER(C),OTHER:#CONTROL(C)": [
       "combo",
       "SUPER(C)"
     ],
-    "WINDOWS:#CONTROL(C):MAC:#SUPER(C)": [
+    "WINDOWS:#CONTROL(C),MAC:#SUPER(C)": [
       "combo",
       "SUPER(C)"
     ],
@@ -20,11 +20,11 @@
       "combo",
       "CONTROL(C)"
     ],
-    "WINDOWS:Hello:MAC:Hi:LINUX:Good day:OTHER:Whassup": [
+    "WINDOWS:Hello,MAC:Hi,LINUX:Good day,OTHER:Whassup": [
       "text",
       "Hi"
     ],
-    "Windows:Goodbye:Mac:Bye:Linux:See you:Other:Sayonara": [
+    "Windows:Goodbye,Mac:Bye,Linux:See you,Other:Sayonara": [
       "text",
       "Bye"
     ]

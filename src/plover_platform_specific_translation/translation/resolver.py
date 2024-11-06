@@ -23,7 +23,7 @@ _TEXT: str = "text"
 _ARGUMENT_DIVIDER: Pattern[str] = re.compile(
     """
     (?:(?<=MAC)|(?<=WINDOWS)|(?<=LINUX|OTHER)): # Colon after platform name
-    |:(?:(?=MAC)|(?=WINDOWS)|(?=LINUX|OTHER))   # OR colon before platform name
+    |,(?:(?=MAC)|(?=WINDOWS)|(?=LINUX|OTHER))   # OR comma before platform name
     """,
     re.IGNORECASE | re.VERBOSE
 )

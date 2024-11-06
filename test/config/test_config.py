@@ -57,7 +57,7 @@ def test_loading_valid_config(valid_platform_translations_config_path):
 
     assert (
         config_platform_translations[
-            "WINDOWS:Hello:MAC:Hi:LINUX:Good day:OTHER:Whassup"
+            "WINDOWS:Hello,MAC:Hi,LINUX:Good day,OTHER:Whassup"
         ]
         == ("text", "Hi")
     )
